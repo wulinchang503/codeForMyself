@@ -20,11 +20,11 @@ def novel_spider(name, url):
     # url = "https://book.qidian.com/info/1016397637#Catalog"
     res = requests.get(url, headers=headers)
     res.encoding = "utf8"
-    # print(res.text)
+    print(res.text)
     author = re.findall(r"authorName: '(.+?)',", res.text)
     with open(name + ".txt", "a", encoding="utf8") as f:
         # f.write(f'作者：{author[0]}\n\n')
-        f.write(f'作者：佚名\n\n')
+        f.write(f'作者：{author}\n\n')
     novel_url_list = re.findall(r'<a href="//(read.qidian.com/chapter/.+?)" target', res.text)
     for x in novel_url_list:
         res1 = requests.get(f"https://{x}", headers=headers)
@@ -42,8 +42,8 @@ def novel_spider(name, url):
 
 # 爬起点中文网免费小说，仅限免费小说。
 if __name__ == '__main__':
-    novel_name = "回到三国战五胡"
-    novel_url = "https://book.qidian.com/info/1023805447"
+    novel_name = "吞天记"
+    novel_url = "https://book.qidian.com/info/1016399199"
     with open(novel_name + ".txt", "a", encoding="utf8") as a:
         a.write(f'小说：《{novel_name}》\t网址：{novel_url}\n')
     novel_spider(novel_name, novel_url)
