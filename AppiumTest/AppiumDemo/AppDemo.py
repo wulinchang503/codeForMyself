@@ -5,7 +5,7 @@ from appium.webdriver.common.touch_action import TouchAction
 
 # from selenium.webdriver.support.wait import WebDriverWait
 
-# 找到这个手机  手机的一些参数
+# 找到这个手机  手机的一些参数  测试git
 desired = {
     "deviceName": "127.0.0.1:62001",
     "platformName": "Android",
